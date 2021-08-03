@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+</head>
+<body>
+  <div th:if="${usuarios == null or usuarios.empty}">
+      <p>No hay ni chimbo. Haga click <a th:href="@{/agregarUsuario}">aquí</a> para agregar uno nuevo</p>
+  </div>
+  <div th:if="${usuarios != null and !usuarios.empty}">
+      <a th:href="@{/agregarUsuario}">Agregar Usuarios</a>
+      <table>
+          <tr>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Tipo ID</th>
+              <th>ID</th>
+          </tr>
+          <tr th:each="usuario : ${usuarios}">
+              <td th:text="${usuario.getNombres()}"></td>
+              <td th:text="${usuario.getApellidos()}"></td>
+              <td th:text="${usuario.getTipoID_FK().getNombre()}"></td>
+              <td th:text="${usuario.getIdentificacion()}"></td>
+          </tr>
+      </table>
+  </div>
+</body>
+</html>

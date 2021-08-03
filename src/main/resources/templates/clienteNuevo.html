@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar un cliente</title>
+</head>
+    <body>
+        <div th:if="${tiposID == null or tiposID.empty}">
+            <p>No hay tipos de id. Haga clic <a th:href="@{/agregarTipo}">aquí</a> para agregar tipos.</p>
+        </div>
+        <div th:if="${tiposID != null and !tiposID.empty}">
+            <form th:action="@{/nuevoUsuario}" th:method="post" th:object="${usuario}">
+                <input type="text" id="nombres" name="nombres" placeholder="Gabriel Ernesto">
+                <input type="text" id="apellidos" name="apellidos" placeholder="Blanco Larrota">
+                <select type="text" id="tipoID_FK" name="tipoID_FK">
+                    <option th:each="tipoID: ${tiposID}" th:value="${tipoID.getId()}" th:text="${tipoID.getNombre()}"></option>
+                </select>
+                <input type="text" id="identificacion" name="identificacion" placeholder="1075680601">
+                <input id="submit" name="submit" type="submit" value="Agregar">
+            </form>
+        </div>
+    </body>
+</html>

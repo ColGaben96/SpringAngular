@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear un nuevo tipo de id</title>
+</head>
+    <body>
+      <form th:action="@{/nuevoID}" th:method="post" th:object="${tipoID}">
+            <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Ej. Cédula de Ciudadanía">
+            <input id="submit" name="submit" type="submit" value="Agregar">
+      </form>
+    </body>
+</html>
